@@ -4406,23 +4406,57 @@ const githubData = [
       }
     }
   ]
+//===========================How many total commits were made in all of Steve's events?
 
+// //creating a counter starting at 0
+// let totalCommit = 0;
 
-//creating a counter starting at 0
-let totalCommit = 0;
+// //iterate through githubData
+// for(let i = 0; i < githubData.length; i++){
 
-//iterate through githubData
+// //if the string commits is in payload
+//   if('commits' in githubData[i].payload){
+
+// //the variable allCommits is being assigned the new length of the commits array with every iteration
+//     const allCommits = githubData[i].payload.commits.length
+// //With every iteration the value of commits is added to total commit
+//     totalCommit += allCommits
+//   }
+// }
+// //printing the total number of commits to the console
+// console.log(totalCommit)
+
+// 59 IS THE ANSWER
+
+//=============================How many of each event type are there? (PullRequestEvent, PushEvent, etc)
+let pushEvent = 0;
+let deleteEvent = 0;
+let issueCommentEvent = 0;
+let createEvent = 0;
+let pullRequestEvent =0;
+
 for(let i = 0; i < githubData.length; i++){
-
-//if the string commits is in payload
-  if('commits' in githubData[i].payload){
-
-//the variable allCommits is being assigned the new length of the commits array with every iteration
-    const allCommits = githubData[i].payload.commits.length
-//With every iteration the value of commits is added to total commit
-    totalCommit += allCommits
+  if(githubData[i].type === 'PushEvent'){
+    pushEvent++
+  }else if(githubData[i].type === 'DeleteEvent'){
+    deleteEvent++
+  }else if(githubData[i].type === 'IssueCommentEvent'){
+    issueCommentEvent++
+  }else if(githubData[i].type === 'CreateEvent'){
+    createEvent++
+  }else if(githubData[i].type === 'PullRequestEvent'){
+    pullRequestEvent++
   }
+  console.log(`${pushEvent} = 'PushEvent'`)
+  console.log(`${deleteEvent} = 'DeleteEvent'`)
+  console.log(`${issueCommentEvent} = 'IssueCommentEvent`)
+  console.log(`${createEvent} = 'CreateEvent'`)
+  console.log(`${pullRequestEvent} = 'PullRequestEvent'`)
 }
-//printing the total number of commits to the console
-console.log(totalCommit)
+//=========================List all Github users who submitted a pull request that was approved by Steve.
+//==========================List all repositories on which Steve had an event, and show how many events were on each one.
 
+//========================Which event had the most number of commits?
+
+//==================Which programming langugages were affected by Steve's events?
+//======================What programming language was the most affected by Steve's events?*/
