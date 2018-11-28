@@ -4408,23 +4408,23 @@ const githubData = [
   ]
 //===========================How many total commits were made in all of Steve's events?
 
-// //creating a counter starting at 0
-// let totalCommit = 0;
+//creating a counter starting at 0
+let totalCommit = 0;
 
-// //iterate through githubData
-// for(let i = 0; i < githubData.length; i++){
+//iterate through githubData
+for(let i = 0; i < githubData.length; i++){
 
-// //if the string commits is in payload
-//   if('commits' in githubData[i].payload){
+//if the string commits is in payload
+  if('commits' in githubData[i].payload){
 
-// //the variable allCommits is being assigned the new length of the commits array with every iteration
-//     const allCommits = githubData[i].payload.commits.length
-// //With every iteration the value of commits is added to total commit
-//     totalCommit += allCommits
-//   }
-// }
-// //printing the total number of commits to the console
-// console.log(totalCommit)
+//the variable allCommits is being assigned the new length of the commits array with every iteration
+    const allCommits = githubData[i].payload.commits.length
+//With every iteration the value of commits is added to total commit
+    totalCommit += allCommits
+  }
+}
+//printing the total number of commits to the console
+console.log(totalCommit)
 
 // 59 IS THE ANSWER
 
@@ -4454,6 +4454,21 @@ for(let i = 0; i < githubData.length; i++){
   console.log(`${pullRequestEvent} = 'PullRequestEvent'`)
 }
 //=========================List all Github users who submitted a pull request that was approved by Steve.
+let userNames = [];
+
+for(let i = 0; i < githubData.length; i++){
+  
+  if('pull_request' in githubData[i].payload){
+    const gitData = githubData[i].payload.pull_request.user.login
+    if(gitData in userNames){
+      console.log('already in there')
+    }else{
+      userNames.push(gitData)
+    }
+  }
+}
+console.log(userNames)
+
 //==========================List all repositories on which Steve had an event, and show how many events were on each one.
 
 //========================Which event had the most number of commits?
